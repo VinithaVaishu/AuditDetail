@@ -9,10 +9,6 @@ public class UtilClass {
 	
 	
 	
-	private static  loadChannelMap() {
-		
-	}
-	
 	public static String getTopic() {
 		return null;
 	}

@@ -26,9 +26,10 @@ public class KafkaConsumerService {
 	public CargowiseApiPollingService pollingServcie;
 	
 	@KafkaListener(topicPartitions 
-			  = @TopicPartition(topic = "com.apll.cargowise.summary", partitions = { "0"}))
+			  = @TopicPartition(topic = "com.apll.cargowise.summary", partitions = { "0","1","2","3"}))
 	public void readMessage(String message) {
 		ObjectMapper mapper = new ObjectMapper();
+		System.out.println(message);
 		
 			try {
 				ChangedTable changedTable = mapper.readValue(message, ChangedTable.class);
@@ -39,5 +40,5 @@ public class KafkaConsumerService {
 			}
 		
 			
-			System.out.println(message);
+			
 	}}
