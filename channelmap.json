@@ -1,0 +1,97 @@
+[
+  {
+    "ChangedTableName": "GlbGroup",
+    "DetailKafkaTopic": "com.apll.cargowise.detail_1",
+    "DetailPartition": 0
+  },
+  {
+    "ChangedTableName": "GlbGroupRole",
+    "DetailKafkaTopic": "com.apll.cargowise.detail_1",
+    "DetailPartition": 1
+  },
+  {
+    "ChangedTableName": "GlbReleaseNote",
+    "DetailKafkaTopic": "com.apll.cargowise.detail_1",
+    "DetailPartition": 2
+  },
+  {
+    "ChangedTableName": "GlbSecurity",
+    "DetailKafkaTopic": "com.apll.cargowise.detail_1",
+    "DetailPartition": 3
+  },
+  {
+    "ChangedTableName": "ProcessTaskNotification",
+    "DetailKafkaTopic": "com.apll.cargowise.detail_1",
+    "DetailPartition": 4
+  },
+  {
+    "ChangedTableName": "ProcessTasks",
+    "DetailKafkaTopic": "com.apll.cargowise.detail_1",
+    "DetailPartition": 5
+  },
+  {
+    "ChangedTableName": "ProcessTaskTemplate",
+    "DetailKafkaTopic": "com.apll.cargowise.detail_3",
+    "DetailPartition": 0
+  },
+  {
+    "ChangedTableName": "RefDocType",
+    "DetailKafkaTopic": "com.apll.cargowise.detail_3",
+    "DetailPartition": 1
+  },
+  {
+    "ChangedTableName": "StmData",
+    "DetailKafkaTopic": "com.apll.cargowise.detail_3",
+    "DetailPartition": 2
+  },
+  {
+    "ChangedTableName": "StmEvent",
+    "DetailKafkaTopic": "com.apll.cargowise.detail_3",
+    "DetailPartition": 3
+  },
+  {
+    "ChangedTableName": "StmALog",
+    "DetailKafkaTopic": "com.apll.cargowise.detail_3",
+    "DetailPartition": 4
+  },
+  {
+    "ChangedTableName": "RefLocoMap",
+    "DetailKafkaTopic": "com.apll.cargowise.detail_3",
+    "DetailPartition": 5
+  },
+  {
+    "ChangedTableName": "RefUNLOCO",
+    "DetailKafkaTopic": "com.apll.cargowise.detail_2",
+    "DetailPartition": 0
+  },
+  {
+    "ChangedTableName": "RefZonePivot",
+    "DetailKafkaTopic": "com.apll.cargowise.detail_2",
+    "DetailPartition": 1
+  },
+  {
+    "ChangedTableName": "RefCountry",
+    "DetailKafkaTopic": "com.apll.cargowise.detail_2",
+    "DetailPartition": 2
+  },
+  {
+    "ChangedTableName": "RefLocoMap",
+    "DetailKafkaTopic": "com.apll.cargowise.detail_2",
+    "DetailPartition": 3
+  },
+  {
+    "ChangedTableName": "RefUNLOCO",
+    "DetailKafkaTopic": "com.apll.cargowise.detail_2",
+    "DetailPartition": 4
+  },
+  {
+    "ChangedTableName": "RefZonePivot",
+    "DetailKafkaTopic": "com.apll.cargowise.detail_2",
+    "DetailPartition": 5
+  }
+    {
+    "ChangedTableName": "Others",
+    "DetailKafkaTopic": "com.apll.cargowise.detail_4",
+    "DetailPartition": 0
+  }
+]
