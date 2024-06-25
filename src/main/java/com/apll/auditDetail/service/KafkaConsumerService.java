@@ -3,6 +3,7 @@ package com.apll.auditDetail.service;
 import java.io.IOException;
 import java.util.List;
 
+import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.kafka.annotation.KafkaListener;
@@ -25,14 +26,14 @@ public class KafkaConsumerService {
 	@Autowired
 	public CargowiseApiPollingService pollingServcie;
 	
-	@KafkaListener(topicPartitions 
-			  = @TopicPartition(topic = "com.apll.cargowise.summary", partitions = { "0","1","2","3"}))
-	public void readMessage(String message) {
+	@KafkaListener(groupId = "group_id", topicPartitions 
+			  = @TopicPartition(topic = "com.apll.cargowise.summary", partitions = {"3","1", "2", "0" }))
+	public void readMessage(ConsumerRecord<String,String> message) {
 		ObjectMapper mapper = new ObjectMapper();
 		System.out.println(message);
 		
 			try {
-				ChangedTable changedTable = mapper.readValue(message, ChangedTable.class);
+				ChangedTable changedTable = mapper.readValue(message.value(), ChangedTable.class);
 				pollingServcie.detailApiPolling(changedTable);
 			} catch (JsonProcessingException e) {
 				// TODO Auto-generated catch block

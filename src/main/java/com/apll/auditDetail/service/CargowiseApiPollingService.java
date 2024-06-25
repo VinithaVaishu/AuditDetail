@@ -34,27 +34,33 @@ public class CargowiseApiPollingService {
 
 	WebClient client = WebClient.builder().baseUrl("https://svc-a0ptrn.wisegrid.net")
 			.filter(basicAuthenticationFilter).build();
-
-	
-	
+//	.queryParam("table", "RefZonePivot")
+//	  .queryParam("schema","dbo")
+//	  .queryParam("lsn","0x0000031B000019AD008E")
+	 Long start = System.currentTimeMillis();
+int pageNo=1;
+int noOfRowsChanged=0;
+int TotalNoOfRows=table.getNumberOfRows();
+	do
+	{	 int page =pageNo;
 	  List<Object> changedrows = client.get().uri(uriBuilder ->
 	  uriBuilder.path("/Services/api/analytics/audit-data")
 	  .queryParam("response_format", "JSON")
 	  .queryParam("table", table.getChangedTableName())
 	  .queryParam("schema",table.getSchemaName())
 	  .queryParam("lsn",table.getLsn())
-//	  .queryParam("table", "RefZonePivot")
-//	  .queryParam("schema","dbo")
-//	  .queryParam("lsn","0x0000031B000019AD008E")
-	  .queryParam("page",1)
-	  .queryParam("page_size", 10000).build())
+	  .queryParam("page",page)
+	  .queryParam("page_size", 10).build())
 	  .retrieve().bodyToFlux(Object.class).collectList().block();
-	  
-	  Long start = System.currentTimeMillis();
 	  for (Object object : changedrows) {
-		kafkaProducerService.publishAuditData(changedrows, table);
-	}
-     
+			kafkaProducerService.publishAuditData(changedrows, table,page);
+		}
+	  
+	  TotalNoOfRows=TotalNoOfRows-10;
+	  pageNo++;
+	}while(TotalNoOfRows>0);
+	 
+	 
 	  Long end = System.currentTimeMillis();
 	  System.out.println( end-start);
 	
