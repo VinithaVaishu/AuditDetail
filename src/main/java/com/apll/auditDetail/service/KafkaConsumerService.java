@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.annotation.TopicPartition;
+import org.springframework.kafka.support.Acknowledgment;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.ClientRequest;
 import org.springframework.web.reactive.function.client.ExchangeFilterFunction;
@@ -28,13 +29,20 @@ public class KafkaConsumerService {
 	
 	@KafkaListener(groupId = "group_id", topicPartitions 
 			  = @TopicPartition(topic = "com.apll.cargowise.summary", partitions = {"3","1", "2", "0" }))
-	public void readMessage(ConsumerRecord<String,String> message) {
+	public void readMessage(ConsumerRecord<String,String> message,Acknowledgment acknowledgment) {
 		ObjectMapper mapper = new ObjectMapper();
 	
 		
 			try {
 				ChangedTable changedTable = mapper.readValue(message.value(), ChangedTable.class);
 				pollingServcie.detailApiPolling(changedTable);
+				System.out.println("Processing successful. Acknowledging the message.");
+//				
+				acknowledgment.acknowledge(); 
+				
+
+	            // Log after acknowledging
+	            System.out.println("Message acknowledged successfully.");
 			} catch (JsonProcessingException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
