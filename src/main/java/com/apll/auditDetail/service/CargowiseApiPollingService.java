@@ -50,13 +50,10 @@ int TotalNoOfRows=table.getNumberOfRows();
 	  .queryParam("schema",table.getSchemaName())
 	  .queryParam("lsn",table.getLsn())
 	  .queryParam("page",page)
-	  .queryParam("page_size", 10).build())
+	  .queryParam("page_size", 100).build())
 	  .retrieve().bodyToFlux(Object.class).collectList().block();
-	  for (Object object : changedrows) {
-			kafkaProducerService.publishAuditData(changedrows, table,page);
-		}
-	  
-	  TotalNoOfRows=TotalNoOfRows-10;
+	  kafkaProducerService.publishAuditData(changedrows, table,page);
+	  TotalNoOfRows=TotalNoOfRows-100;
 	  pageNo++;
 	}while(TotalNoOfRows>0);
 	 

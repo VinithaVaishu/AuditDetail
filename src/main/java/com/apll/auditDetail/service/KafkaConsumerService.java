@@ -30,7 +30,7 @@ public class KafkaConsumerService {
 			  = @TopicPartition(topic = "com.apll.cargowise.summary", partitions = {"3","1", "2", "0" }))
 	public void readMessage(ConsumerRecord<String,String> message) {
 		ObjectMapper mapper = new ObjectMapper();
-		System.out.println(message);
+	
 		
 			try {
 				ChangedTable changedTable = mapper.readValue(message.value(), ChangedTable.class);
