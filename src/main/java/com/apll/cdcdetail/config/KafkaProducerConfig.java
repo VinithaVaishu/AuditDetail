@@ -1,4 +1,4 @@
-package com.apll.auditDetail.config;
+package com.apll.cdcdetail.config;
 
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
@@ -14,7 +14,7 @@ import org.springframework.kafka.support.serializer.JsonSerializer;
 public class KafkaProducerConfig {
 	@Value("${spring.kafka.producer.bootstrap-servers}")
     private String bootstrapServers;
-	
+	 
 	
 
     @Bean
@@ -23,7 +23,7 @@ public class KafkaProducerConfig {
         configProps.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
         configProps.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG,StringSerializer.class);
         configProps.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
-     //   configProps.put(ProducerConfig.PARTITIONER_CLASS_CONFIG, CustomPartitioner.class);
+        configProps.put(ProducerConfig.PARTITIONER_CLASS_CONFIG, CustomPartitioner.class);
        // configProps.put(ProducerConfig, bootstrapServers)
         return new DefaultKafkaProducerFactory<>(configProps);
     }

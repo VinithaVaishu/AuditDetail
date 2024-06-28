@@ -1,4 +1,4 @@
-package com.apll.auditDetail;
+package com.apll.cdcdetail;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
