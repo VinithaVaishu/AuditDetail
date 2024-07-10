@@ -33,7 +33,7 @@ public class KafkaProducerService {
 		// String key = table.getChangedTableName()+"_"+table.getLsn();
 		System.out.println(key);
 		String topic= AppUtil.getTopic(key);
-		CompletableFuture<SendResult<String, String>> result = template.send(topic, key,
+		CompletableFuture<SendResult<String, String>> result = template.send("cdr-detail-topic-01", key,
 				detailRecord.toString());
 
 		return result.toString();
@@ -52,7 +52,7 @@ public class KafkaProducerService {
 		topic= AppUtil.getTopic(key);
 		String JsonformatDetailRecord = AppUtil.getJsonFormatString(detailrecord.toString());
 		System.out.println(topic+"_"+key+"_"+JsonformatDetailRecord);
-		CompletableFuture<SendResult<String, String>> result =template.send("com.apll.cargowise.detail_1", key,
+		CompletableFuture<SendResult<String, String>> result =template.send("cdr-detail-topic-01", key,
 				JsonformatDetailRecord);
 		
 		
