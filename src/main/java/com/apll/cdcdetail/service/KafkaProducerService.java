@@ -51,7 +51,7 @@ public class KafkaProducerService {
 		}
 		topic= AppUtil.getTopic(key);
 		String JsonformatDetailRecord = AppUtil.getJsonFormatString(detailrecord.toString());
-		System.out.println(topic+"_"+key+"_"+JsonformatDetailRecord);
+		System.out.println(key+"_"+JsonformatDetailRecord);
 		CompletableFuture<SendResult<String, String>> result =template.send("cdr-detail-topic-01", key,
 				JsonformatDetailRecord);
 		

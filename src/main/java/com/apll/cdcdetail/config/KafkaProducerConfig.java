@@ -34,7 +34,7 @@ public class KafkaProducerConfig {
           configProps.put(ProducerConfig.PARTITIONER_CLASS_CONFIG, CustomPartitioner.class);
           configProps.put(CommonClientConfigs.SECURITY_PROTOCOL_CONFIG, securityProtocol);
           configProps.put(SaslConfigs.SASL_MECHANISM, saslMechanism);
-          configProps.put(SaslConfigs.SASL_JAAS_CONFIG,saslJaasConfig);
+          configProps.put(SaslConfigs.SASL_JAAS_CONFIG,"org.apache.kafka.common.security.plain.PlainLoginModule required username='TZNHIDR3TZFBPDYO' password='Jqx/UVRzg2yTpAYh/yLF3iRk7Fejep8dzWkPwzliCRrBLHQReAHqstt9j2VF8m/u';");
           
         return new DefaultKafkaProducerFactory<>(configProps);
     }
