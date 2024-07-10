@@ -26,5 +26,17 @@ public class AppUtil {
 			}
 		return topic;
 	}
+	 public static String getJsonFormatString(String str) {
+		 StringBuffer jsonString=null;
+		 str = str.substring(1,str.length()-1 );
+		 jsonString= new StringBuffer("{");
+		 String[] fields = str.toString().split(",");
+			for (int i = 0; i < fields.length; i++) {
+				jsonString.append("\""+fields[i].replaceFirst("=", "\":\"").trim()+"\",");
+			}
+			jsonString=jsonString.replace(jsonString.length()-1,jsonString.length(), "}");
+		 
+		 return jsonString.toString();
+	 }
 
 }

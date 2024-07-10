@@ -50,10 +50,10 @@ public class KafkaProducerService {
 			}
 		}
 		topic= AppUtil.getTopic(key);
-		
-		System.out.println(topic+"_"+key+"_"+detailrecord.toString());
-		CompletableFuture<SendResult<String, String>> result =template.send(topic, key,
-				detailrecord.toString());
+		String JsonformatDetailRecord = AppUtil.getJsonFormatString(detailrecord.toString());
+		System.out.println(topic+"_"+key+"_"+JsonformatDetailRecord);
+		CompletableFuture<SendResult<String, String>> result =template.send("com.apll.cargowise.detail_1", key,
+				JsonformatDetailRecord);
 		
 		
 		return result.toString();
