@@ -30,7 +30,7 @@ public class KafkaProducerConfig {
     	  var configProps = new java.util.HashMap<String, Object>();
           configProps.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
           configProps.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG,StringSerializer.class);
-          configProps.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
+          configProps.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, RawJsonStringSerializer.class);
           configProps.put(ProducerConfig.PARTITIONER_CLASS_CONFIG, CustomPartitioner.class);
           configProps.put(CommonClientConfigs.SECURITY_PROTOCOL_CONFIG, securityProtocol);
           configProps.put(SaslConfigs.SASL_MECHANISM, saslMechanism);

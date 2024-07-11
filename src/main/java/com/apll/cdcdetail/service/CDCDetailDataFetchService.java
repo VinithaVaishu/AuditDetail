@@ -15,10 +15,12 @@ import com.apll.cdcdetail.model.CDCSummaryResponse;
 import com.fasterxml.jackson.databind.JsonNode;
 
 import jakarta.annotation.PostConstruct;
+import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Service
+@Slf4j
 public class CDCDetailDataFetchService {
 	@Autowired
 	public KafkaProducerService kafkaProducerService;
@@ -50,7 +52,9 @@ public class CDCDetailDataFetchService {
 		int noOfRowsChanged = 0;
 		int TotalNoOfRows = table.getNumberOfRows();
 		do {
+			
 			int page = pageNo;
+			log.info("Cargowise detail records fetching started for table : "+table.getChangedTableName()+ " lsn : "+table.getLsn()+" page : "+ page);
 			List<Object> changedrows = client.get()
 					.uri(uriBuilder -> uriBuilder.path(path)
 							.queryParam(AppConstants.response_format, responseFormat).queryParam(AppConstants.table, table.getChangedTableName())

@@ -8,6 +8,17 @@ import com.fasterxml.jackson.databind.JsonNode;
 @Component
 public class AppUtil {
 	
+	public static String getKey(String str) {
+		String key=null;
+		String[] fields = str.split(",");
+		for (int i = 0; i < fields.length; i++) {
+			if (fields[i].contains("_PK=")) {
+				key = fields[i].substring(7);
+				break;
+			}
+		}
+		return key;
+	}
 	
 	public static String getTopic(String key) {
 		String topic = null;
